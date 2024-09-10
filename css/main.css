@@ -73,6 +73,18 @@ body {
     top: -80px;
 }
 
+.card-depoimento {
+    height: 450px;
+    width: 450px;
+    border-radius: 170px;
+    background-color: #ebfaa9;
+    position: absolute;
+    right: 0;
+    top: -80px;
+}
+.container-depoimento{
+    margin-left: 8.3%;
+}
 .img-banner img {
     position: absolute;
     width: 570px;
@@ -232,14 +244,33 @@ a.navbar-brand {
     padding-bottom: 150px;
 }
 
+.background-cardapio {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 500px;
+    background-image: url(../img/bg-icons-1.png);
+}
+
+.container-menu {
+    margin-bottom: 40px;
+}
+
 .card-item {
     height: 360px;
+}
+
+.card-item .img-produto img {
+    width: 100%;
+    border-radius: 11px;
+
 }
 
 .card-item .title-produto {
     color: var(--color-black);
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
     height: 40px;
     margin-bottom: 0px;
 }
@@ -271,21 +302,50 @@ a.navbar-brand {
     color: var(--color-black-heavy);
     padding: 5px 7px;
     border: 2px solid var(--color-black-heavy);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     font-size: 14px;
     cursor: pointer;
 }
 
-.add-numero-itens {
+.btn-numero-itens {
     color: var(--color-black-heavy);
     padding: 5px 7px;
     border-top: 2px solid var(--color-black-heavy);
     border-bottom: 2px solid var(--color-black-heavy);
-    font-size: 18px;
+    font-size: 14px;
 }
 
-.btb-add {
+.btn-add {
     border: 2px solid var(--color-black-heavy);
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: var(--color-white);
+    background-color: var(--color-black-heavy);
+    margin-left: 15px;
+}
 
+.card-item:hover {
+    background-color: var(--color-primary);
+}
+
+.card-item:hover .title-produto {
+    display: none;
+}
+
+.card-item:hover .price-produto {
+    color: var(--color-black-heavy) !important;
+    margin-top: 20px;
+}
+
+.card-item:hover .add-carrinho {
+    display: flex;
+}
+
+
+
+/* footer */
+.footer .container {
+    align-content: space-between;
 }
