@@ -72,7 +72,22 @@ body {
     right: 0;
     top: -80px;
 }
+.elementos-reserva{
+    display: flex; 
+}
+.interno-reserva{
+   margin-top: 100px;
+   margin-bottom:100px ;
+   margin-left: 50px;
+}
+.card-reserva{
 
+    height: 600px;
+    width: 1150px;
+    border-radius: 170px;
+    background-color: #e9f086;
+    position: absolute;
+}
 .depoimentos {
     padding-top: 100px;
     padding-bottom: 150px;
