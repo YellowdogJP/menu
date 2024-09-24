@@ -73,20 +73,46 @@ body {
     top: -80px;
 }
 .elementos-reserva{
-    display: flex; 
+    display: flex;
+    align-content: center;
 }
 .interno-reserva{
    margin-top: 100px;
    margin-bottom:100px ;
    margin-left: 50px;
 }
+.interno-reserva p{
+   font-size: 18px;
+   color: var(--color-black);
+   word-wrap: break-word;
+   width: 450px;
+}
 .card-reserva{
 
-    height: 600px;
+    height: 500px;
     width: 1150px;
-    border-radius: 170px;
-    background-color: #e9f086;
+    border-radius: 75px;
+    background-color: #fff2cc;
+    position:absolute;
+}
+.card-reserva-white{
+    height: 300px;
+    width: 300px;
+    border-radius: 114px;
+    background-color: #FFFFFF;
     position: absolute;
+    left:385px;
+    top: -35px;
+}
+.reserva-title{
+    word-wrap: break-word;
+   width: 350px;
+   color: var(--color-black-heavy);
+}
+.img-reserva img{
+    position: absolute;
+    left: 300px;
+    top: 35px;
 }
 .depoimentos {
     padding-top: 100px;
@@ -226,7 +252,7 @@ body {
 
 .hint-title {
     color: var(--color-primary);
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     letter-spacing: 5px;
 }
