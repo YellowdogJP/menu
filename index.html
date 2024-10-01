@@ -454,15 +454,54 @@
 
 
 
-    <div class="modal-full" id="modal-carrinho"></div>
-    <div class="m-header">
-        <div class="container">
-            <a class="btn btn-white btn-sm float-right">fechar</a>
+    <div class="modal-full" id="modal-carrinho">
+        <div class="m-header">
+            <div class="container">
+                <a class="btn btn-white btn-sm float-right">fechar</a>
+                <div class="etapas">
+                    <div class="etapa etapa1 active">1</div>
+                    <div class="etapa etapa2">2</div>
+                    <div class="etapa etapa3">3</div>
+                </div>
+                <p class="title-carrinho mt-4">
+                    <b id="lblTituloEtapa">Seu carrinho:</b>
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="m-body"></div>
-    <div class="m-footer"></div>
+        <div class="m-body">
+            <div class="container">
 
+                <div id="itensCarrinho" class="row mr-0 ml-0">
+
+                    <div class="col-12 item-carrinho">
+                        <div class="img-produto">
+                            <img src="./img/cardapio/burguers/burger-au-poiv">
+                        </div>
+                        <div class="dados-produto">
+                            <p class="title-produto"><b>Produto</b></p>
+                            <p class="price-produto"><b>R$ 149,90</b></p>
+                        </div>
+                        <div class="add-carrinho">
+                            <span class="btn-menos"><i class="fas fa-minus">
+                                    <span class="btn-numero-itens">0</span>
+                                    <span class="btn-mais"><i class="fas fa-plus"></span>
+                                    <span class="btn btn-remove"><i class="fa fa-tim"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="localEntrega" class="row mr-0 ml-0 hidden">
+
+                </div>
+                <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="m-footer"></div>
+    </div>
     <script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="./js/modernizr-3.5.0.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>

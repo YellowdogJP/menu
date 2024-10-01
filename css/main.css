@@ -72,48 +72,56 @@ body {
     right: 0;
     top: -80px;
 }
-.elementos-reserva{
+
+.elementos-reserva {
     display: flex;
     align-content: center;
 }
-.interno-reserva{
-   margin-top: 100px;
-   margin-bottom:100px ;
-   margin-left: 50px;
+
+.interno-reserva {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 50px;
 }
-.interno-reserva p{
-   font-size: 18px;
-   color: var(--color-black);
-   word-wrap: break-word;
-   width: 450px;
+
+.interno-reserva p {
+    font-size: 18px;
+    color: var(--color-black);
+    word-wrap: break-word;
+    width: 450px;
 }
-.card-reserva{
+
+.card-reserva {
 
     height: 500px;
     width: 1150px;
     border-radius: 75px;
     background-color: #fff2cc;
-    position:absolute;
+    position: absolute;
 }
-.card-reserva-white{
+
+.card-reserva-white {
     height: 300px;
     width: 300px;
     border-radius: 114px;
     background-color: #FFFFFF;
     position: absolute;
-    left:385px;
+    left: 385px;
     top: -35px;
 }
-.reserva-title{
+
+.reserva-title {
     word-wrap: break-word;
-   width: 350px;
-   color: var(--color-black-heavy);
+    width: 350px;
+    color: var(--color-black-heavy);
 }
-.img-reserva img{
+
+.img-reserva img {
     position: absolute;
     left: 300px;
     top: 35px;
 }
+
 .depoimentos {
     padding-top: 100px;
     padding-bottom: 150px;
@@ -468,24 +476,31 @@ a.navbar-brand {
 
 /* footer */
 .footer {
-background-color: var(--color-secondary);
+    background-color: var(--color-secondary);
 }
-.container-logo-footer, .container-texto-footer, .container-redes-footer{
- display: flex;
- align-items: center;
+
+.container-logo-footer,
+.container-texto-footer,
+.container-redes-footer {
+    display: flex;
+    align-items: center;
 }
-.container-logo-footer{
+
+.container-logo-footer {
     justify-content: start;
 }
-.container-texto-footer{
+
+.container-texto-footer {
     justify-content: center;
 }
-.container-redes-footer{
+
+.container-redes-footer {
     justify-content: end;
 }
-.modal-full{
+
+.modal-full {
     position: fixed;
-    top:0;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -496,4 +511,111 @@ background-color: var(--color-secondary);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+}
+
+.m-header {
+    padding-bottom: 20px;
+}
+
+.m-body {
+    flex: 1;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.etapas {
+    display: flex;
+}
+
+.etapa {
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-white);
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    color: var(--color-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.etapa::before {
+    content: '';
+    width: 20px;
+    background-color: var(--color-separate);
+    position: absolute;
+    height: 2px;
+    margin-left: 55px;
+}
+
+.etapa:last-child::before {
+    content: none;
+}
+
+.etapa.active,
+.etapa.active::before {
+    background-color: var(--color-primary);
+}
+
+.title-carrinho {
+    font-size: 20px;
+    color: var(--color-black);
+}
+
+.modal-full .item-carrinho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-separate);
+}
+
+.modal-full .item-carrinho:last-child {
+    border-bottom: none;
+}
+
+.modal-full .img-produto img {
+    width: 100px;
+    border-radius: 11px;
+}
+
+.modal-full .title-produto {
+    color: var(--color-black);
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.modal-full .price-produto {
+    color: var(--color-primary);
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.modal-full .dados-produto {
+    flex: 1;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.modal-full .add-carrinho {
+    display: flex;
+    text-align: center;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-remove {
+    border: 2px solid var(--color-red);
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    margin-left: 15px;
 }
