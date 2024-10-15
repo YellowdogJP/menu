@@ -473,7 +473,7 @@
 
                 <div id="itensCarrinho" class="row mr-0 ml-0">
 
-                    <div class="col-12 item-carrinho hidden">
+                    <div class="col-12 item-carrinho">
                         <div class="img-produto">
                             <img
                                 src="img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg">
@@ -491,64 +491,10 @@
                     </div>
 
                 </div>
-                <!-- segunda etapa do carrinho. -->
-                <div id="localEntrega" class="row mr-0 ml-0">
-                    <!-- inicio da linha 1 ↓↓↓-->
 
-                    <div class="col-4">
-                        <div class="form-group container-cep">
-                            <label>CEP:</label>
-                            <input id="txtCEP" type="text" class="form-control" />
-                            <a class="btn btn-yellow btn-sm">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-8"></div>
-                    <!-- fim da linha 1 ↑↑↑-->
-                    <!-- inicio da linha 2↓↓↓ -->
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label>Endereço:</label>
-                            <input id="txtEndereco" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label>Bairro:</label>
-                            <input id="txtBairro" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <label>Número:</label>
-                            <input id="txtNumero" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <!-- fim da linha 2 ↑↑↑-->
+                <div id="localEntrega" class="row mr-0 ml-0 hidden">
 
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label>Cidade:</label>
-                            <input id="txtCidade" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label>Complemento:</label>
-                            <input id="txtComplemento" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <label>UF:</label>
-                            <input id="txtUF" type="text" class="form-control">
-                        </div>
-                    </div>
                 </div>
-
-
-
                 <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
 
                 </div>
@@ -557,7 +503,7 @@
         </div>
         <div class="m-footer">
             <div class="container">
-                <div class="container-total text-right mb-4 ">
+                <div class="container-total text-rigth mb-4 ">
                     <p class="mb-0">
                         <span>Subtotal</span>
                         <span id="lblSubtotal">R$ 103,00</span>
@@ -573,7 +519,7 @@
                 </div>
             </div>
             <a class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
-            <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar Pedido</a>
+            <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar Pediro</a>
             <a class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar Pedido</a>
             <a class="btn btn-white float-right mr-3" id="btnEtapaResumo">Voltar</a>
 
