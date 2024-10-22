@@ -491,8 +491,8 @@
                     </div>
 
                 </div>
-                <!-- segunda etapa do carrinho. -->
-                <div id="localEntrega" class="row mr-0 ml-0">
+                <!-- segunda etapa do carrinho. ↓↓↓ Formulário do local de entrega-->
+                <div id="localEntrega" class="row mr-0 ml-0 hidden">
                     <!-- inicio da linha 1 ↓↓↓-->
 
                     <div class="col-4">
@@ -526,7 +526,7 @@
                         </div>
                     </div>
                     <!-- fim da linha 2 ↑↑↑-->
-
+                    <!-- inicio da linha 3↓↓↓-->
                     <div class="col-6">
                         <div class="form-group">
                             <label>Cidade:</label>
@@ -545,12 +545,61 @@
                             <input id="txtUF" type="text" class="form-control">
                         </div>
                     </div>
+                    <!-- fim da linha 3 ↑↑↑-->
                 </div>
+                <!-- fim da segunda etapa do carrinho ↑↑↑-->
 
 
+                <div id="resumoCarrinho" class="row mr-0 ml-0">
+                    <div class="col-12">
+                        <p class="title-carrinho mt-4">
+                            <b>Itens</b>
+                        </p>
+                    </div>
 
-                <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
+                    <div class="col-12">
+                        <div class="row" id="listaItensResumo">
 
+                            <div class="col-12 item-carrinho resumo">
+
+                                <div class="img-produto-resumo">
+                                    <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg"
+                                        alt="">
+                                </div>
+
+
+                                <div class="dados-produto">
+                                    <p class="title-produto-resumo">
+                                        <b>Nome do produto</b>
+                                    </p>
+                                    <p class="price-produto-resmo">
+                                        <b>R$ 100,00</b>
+                                    </p>
+                                </div>
+                                <p class="quantidade-produto-resumo">
+                                    x <b>3</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 item-carrinho resumo">
+                        <div class="img-map">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+
+                        <div class="dados-produto">
+                            <p class="texto-endereco">
+                                <b id="resumoEndereco">
+                                    Rua Aloidil da Silva, Bairro Jd Rondônia
+                                </b>
+                            </p>
+                            <p class="cidade-endereco" id="cidadeEndereco">
+                                Rondonópolis-MT CEP 78.730-540
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
