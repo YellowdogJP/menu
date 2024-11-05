@@ -1,6 +1,6 @@
 $(document).ready(function () {
     cardapio.eventos.init();
-//     console.log('Ola turma')
+    //     console.log('Ola turma')
 })
 
 var cardapio = {};
@@ -19,25 +19,26 @@ cardapio.metodos = {
     obterItensCardapio: (categoria = 'burgers', vermais = false) => {
         var filtro = MENU[categoria]
         console.log(filtro)
-        if(!vermais){
+        if (!vermais) {
             $("#itensCardapio").html('')
             $("#btnVerMais").removeClass('hidden');
         }
         //$("#itensCardapio").html('')
-        
+
         $.each(filtro, (i, e) => {
             console.log(e.name);
             // let temp = cardapio.templates.item;
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
-            .replace(/\${name}/g, e.name)
-            .replace(/\${price}/g, e.price.toFixed(2).replace('.',','))
+                .replace(/\${name}/g, e.name)
+                .replace(/\${id}/g, e.id)
+                .replace(/\${price}/g, e.price.toFixed(2).replace('.', ','))
 
-           //botão ver mais foi clicado (12 itens)
-            if(vermais && i >= 8 && i < 12){
+            //botão ver mais foi clicado (12 itens)
+            if (vermais && i >= 8 && i < 12) {
                 $("#itensCardapio").append(temp)
             }
             //paginação inicial (8 itens)
-            if(!vermais && i < 8){
+            if (!vermais && i < 8) {
                 $("#itensCardapio").append(temp)
             }
             // $("#itensCardapio").append(temp)
@@ -47,7 +48,7 @@ cardapio.metodos = {
         $(".container-menu a").removeClass('active');
 
         //seta o menu para ativo
-        $("#menu-"+categoria).addClass('active')
+        $("#menu-" + categoria).addClass('active')
 
     },
 
@@ -58,12 +59,24 @@ cardapio.metodos = {
 
         $("#btnVerMais").addClass('hidden');
     },
+
+    diminuirQuantidade: (id) => {
+        let qntdAtual = parseInt($('#qntd-carrinho-'+id).text())
+        if (qntdAtual > 0) {
+            $('#qntd-carrinho-' + id).text(qntdAtual - 1)
+        }
+    },
+
+    aumentarQuantidade: (id) => {
+        let qntdAtual = parseInt($('#qntd-carrinho-'+id).text())
+        $('#qntd-carrinho-' + id).text(qntdAtual + 1)
+    },
 }
 
 cardapio.templates = {
     item: `
     <div class="col-3 mb-5">
-        <div class="card card-item">
+        <div class="card card-item" id="\${id}">
         <div class="img-produto">
             <img src="\${img}" />
         </div>
@@ -75,9 +88,9 @@ cardapio.templates = {
         </p>
 
         <div class="add-carrinho">
-            <span class="btn-menos"><i class="fas fa-minus"></i></span>
-            <span class="btn-numero-itens">0</span>
-            <span class="btn-mais"><i class="fas fa-plus"></i></span>
+            <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
+            <span class="btn-numero-itens" id="qntd-carrinho-\${id}">0</span>
+            <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
             <span class="btn btn-add"><i class="fa fa-shopping-bag"></i></span>
         </div>
         </div>
