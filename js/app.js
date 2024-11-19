@@ -49,7 +49,7 @@ cardapio.metodos = {
         $(".container-menu a").removeClass('active');
 
         //seta o menu para ativo
-        $("#menu-" + categoria).addClass('active')
+        $("#menu-" + categoria).addClass('active');
 
     },
 
@@ -62,15 +62,15 @@ cardapio.metodos = {
     },
 
     diminuirQuantidade: (id) => {
-        let qntdAtual = parseInt($('#qntd-carrinho-' + id).text())
+        let qntdAtual = parseInt($('#qntd-' + id).text())
         if (qntdAtual > 0) {
-            $('#qntd-carrinho-' + id).text(qntdAtual - 1)
+            $('#qntd-' + id).text(qntdAtual - 1);
         }
     },
 
     aumentarQuantidade: (id) => {
-        let qntdAtual = parseInt($('#qntd-carrinho-' + id).text())
-        $('#qntd-carrinho-' + id).text(qntdAtual + 1)
+        let qntdAtual = parseInt($('#qntd-' + id).text())
+        $('#qntd-' + id).text(qntdAtual + 1)
     },
 
     adicionarAoCarrinho: (id) => {
@@ -80,48 +80,138 @@ cardapio.metodos = {
         if (qntdAtual > 0) {
 
             //obter a categoria ativ
-            var categoria = $(".container-menu").attr('id').split('menu-')[1];
+            var categoria = $(".container-menu a.active").attr('id').split('menu-')[1];
             ///obtem a lista de itens
             let filtro = MENU[categoria];
             //obtem o item
             let item = $.grep(filtro, (e, i) => { return e.id == id });
 
 
-            if (item.lenght > 0) {
+            if (item.length > 0) {
                 //validar se já existe item no carrinho
                 let existe = $.grep(MEU_CARRINHO, (elem, index) => { return elem.id == id });
                 //caso já exista o item no carrinho, só altera a quantidade
-                if(existe.lenght >0){
-                    let objIndex = MEU_CARRINHO.findIndex((obj => obj.id ==id));
+                if (existe.length > 0) {
+                    let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == id));
                     MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + qntdAtual;
                 }
                 //caso não exista o item no carrinho, adiciona ele
-                else{
-                    item[0].qntd= qntdAtual;
+                else {
+                    item[0].qntd = qntdAtual;
                     MEU_CARRINHO.push(item[0])
                 }
+                cardapio.metodos.message("Item adicionado ao carrinho!", 'green')
+                $("#qntd-" + id).text(0)
+
             }
 
         }
     },
 
+    message: (texto, cor = 'red', tempo = 3500) => {
+        let id = Math.floor(Date.now) * Math.random().toString();
+        let msg = `<div class="toast ${cor}">${texto}</div>`;
+        $("#container-mensagens").append(msg);
+        setTimeout(() => {
+            $("#msg-" + id).removeClass('fadeInDown');
+            $("#msg-" + id).addClass('fadeOutUp');
+            setTimeout(() => {
+                $("#msg-" + id).remove();
+            }, 800);
+
+        }, tempo);
+
+    },
+
     //atualiza o badge de totais dos botões "Meu carrinho"
-    atualizarBadgeTotal:() =>{
+    atualizarBadgeTotal: () => {
         var total = 0;
 
-        $.each(MEU_CARRINHO, (i,e) => {
+        $.each(MEU_CARRINHO, (i, e) => {
             total += e.qntd
         })
-        if (total > 0){
+        if (total > 0) {
             $("botao-carrinho").removeClass('hidden')
             $(".container-total-carrinho").addClass('hidden');
         }
-        else{
+        else {
             $(".botao-carrinho").addClass('hidden')
             $(".container-total-carrinho").html(total);
         }
         $(".badge-total-carrinho").html(total);
-    }
+    },
+    // abrir a modal de carrinho
+    abrirCarrinho: (abrir) => {
+
+        if (abrir) {
+            $("#modalCarrinho").removeClass('hidden');
+
+        }
+        else {
+            $("#modalCarrinho").addClass('hidden');
+        }
+
+    },
+    // altera os texto e exibe os botões das etapas
+    carregarEtapa: (etapa) => {
+
+        if (etapa == 1) {
+            $("#lblTituloEtapa").text('Seu carrinho:');
+            $("#itensCarrinho").removeClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+
+            $("#btnEtapaPedido").removeClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").addClass('hidden');
+        }
+        
+        if (etapa == 2) {
+            $("#lblTituloEtapa").text('Endereço de entrega:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").removeClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").removeClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
+        }
+
+        if (etapa == 3) {
+            $("#lblTituloEtapa").text('Resumo do pedido:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").removeClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+            $(".etapa3").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").removeClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
+        }
+
+    },
+    // botão de voltar etapa
+    voltarEtapa: () => {
+
+        let etapa = $(".etapa.active").length;
+        cardapio.metodos.carregarEtapa(etapa - 1);
+
+    },
+
 
 }
 
@@ -141,7 +231,7 @@ cardapio.templates = {
 
         <div class="add-carrinho">
             <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
-            <span class="btn-numero-itens" id="qntd-carrinho-\${id}">0</span>
+            <span class="btn-numero-itens" id="qntd-\${id}">0</span>
             <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
             <span class="btn btn-add" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')"><i class="fa fa-shopping-bag"></i></span>
         </div>
