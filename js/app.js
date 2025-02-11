@@ -6,12 +6,15 @@ $(document).ready(function () {
 var cardapio = {};
 var MEU_CARRINHO = [];
 var CELULAR_EMPRESA = '5566984473981';
+var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 10.00;
 cardapio.eventos = {
 
     init: () => {
         // console.log('iniciou')
         cardapio.metodos.obterItensCardapio();
+        cardapio.metodos.carregarBotaoLigar();
+        cardapio.metodos.carregarBotaoReserva();
     }
 }
 
@@ -134,7 +137,7 @@ cardapio.metodos = {
         }
         else {
             $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i> Seu carrinho está vazio.</p>');
-
+            cardapio.metodos.carregarValores();
         }
     },
 
@@ -210,7 +213,31 @@ cardapio.metodos = {
         cardapio.metodos.atualizarBadgeTotal();
 
     },
+    //carrega o botão reserva
+    carregarBotaoReserva: () => {
+        var texto = 'Olá! gostaria de fazer uma *reserva*';
+        let encode = encodeURI(texto);
+        let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+        $("#btnReserva").attr('href', URL);
+    },
+    //carrega o botão ligar
+    carregarBotaoLigar: () => {
+        $("#btnLigar").attr('href', `tel:${CELULAR_EMPRESA}`);
+    },
 
+    //abre o depoimento
+    abrirDepoimento: (depoimento) => {
+        $("#depoimento-1").addClass('hidden');
+        $("#depoimento-2").addClass('hidden');
+        $("#depoimento-3").addClass('hidden');
+
+        $("#btnDepoimento-1").removeClass('active');
+        $("#btnDepoimento-2").removeClass('active');
+        $("#btnDepoimento-3").removeClass('active');
+
+        $("#depoimento-" + depoimento).removeClass('hidden');
+        $("#btnDepoimento-" + depoimento).addClass('active');
+    },
     message: (texto, cor = 'red', tempo = 1500) => {
         let id = Math.floor(Date.now) * Math.random().toString();
         let msg = `<div id="msg-${id}" class="animated fadeInDown toast ${cor}">${texto}</div>`;
@@ -236,12 +263,12 @@ cardapio.metodos = {
         if (total > 0) {
             $(".badge-total-carrinho").removeClass('hidden')
             $(".botao-carrinho").removeClass('hidden')
-            $(".container-total").addClass('hidden');
+            $(".container-total-carrinho").addClass('hidden');
         }
         else {
             $(".badge-total-carrinho").addClass('hidden')
             $(".botao-carrinho").addClass('hidden')
-            $(".container-total").html(total);
+            $(".container-total-carrinho").html(total);
         }
         $(".badge-total-carrinho").html(total);
     },
@@ -500,7 +527,7 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item: `
-    <div class="col-3 mb-5">
+    <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
         <div class="card card-item" id="\${id}">
         <div class="img-produto">
             <img src="\${img}" />
